@@ -18,24 +18,21 @@ import Echo from 'laravel-echo';
   })
 
   export class CancelComponent {
-    pusher: any
     echo: Echo
-      constructor(private gameservice: GameService, private router: Router){
-        (window as any).Pusher = Pusher;
-        this.echo = new Echo({
-          broadcaster: 'pusher',
-          key: 'GoofNBCH',
-          cluster: 'mt1',
-          encrypted: true,
-          wsHost: window.location.hostname,
-          wsPort: 6001,
-          disableStats: true,
-          forceTLS: false,
-        });
-        this.echo.channel('start-game').listen('.start-game-event', (e: any) => {
-          console.log(e);
-        });
-      }
+    constructor(private gameservice: GameService, private router: Router){
+      (window as any).Pusher = Pusher;
+      this.echo = new Echo({
+        broadcaster: 'pusher',
+        key: 'GoofNBCH',
+        cluster: 'mt1',
+        encrypted: true,
+        wsHost: window.location.hostname,
+        wsPort: 6001,
+        disableStats: true,
+        forceTLS: false,
+      });
+   
+    }
       closewebsocket(){
         if(this.echo){
           this.echo.disconnect();
@@ -65,9 +62,21 @@ import Echo from 'laravel-echo';
             });
           })      
       }
+      ngOnInit(): void {
+        this.echo.channel('start-game').listen('.start-game-event', (e: any) => {
+          const game = localStorage.getItem("game")
+          if(e.gameId == game){
+            Swal.fire({
+              title: "Partida iniciada!",
+              text: "Preparate",
+              icon: "success"
+              });
+              this.router.navigate(['/game']);
+          }
+        });
+      }
       ngOnDestroy(): void {
           this.closewebsocket();
-          this.terminar();
       }
       onDisconnect(): void {
         this.closewebsocket();
