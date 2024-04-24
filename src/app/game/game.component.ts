@@ -29,8 +29,8 @@ import {
     trigger('slideUpDown', [
       transition(':enter', [
         style({ position: 'absolute', transform: 'translatey(0%)' }),
-        animate('2000ms linear', style({ transform: 'translatey(100%)' }))
-      ]),
+        animate('2000ms linear', style({ transform: 'translatey({{firstDivWidth}}px)' }))
+      ],{ params: { firstDivWidth: '0' } } ),
       
 
     ])
@@ -45,15 +45,17 @@ export class GameComponent implements OnInit {
   markerY = 0;
   markerXShip = 0;
   markerYShip = 0;
-  @ViewChild('firstDiv') firstDiv!: ElementRef;
-  @ViewChild('secondDiv') secondDiv!: ElementRef;
-  
+  @ViewChild('firstDiv') firstDiv!: ElementRef<HTMLDivElement>;
+  firstDivWidth!: number;
+
 
   constructor(private elementRef: ElementRef, private gameservice: GameService) { }
 
   ngOnInit(): void {  
   }
   ngAfterViewInit() {
+    this.firstDivWidth = this.firstDiv.nativeElement.getBoundingClientRect().height;
+    console.log(this.firstDivWidth);
     const divElement = this.elementRef.nativeElement.querySelector('#miDiv');
     if (divElement) {
       //console.log(divElement)
@@ -82,24 +84,27 @@ export class GameComponent implements OnInit {
     this.isVisibleMissile = false; // Oculta el div
 
   }
-
+  nada(){}
   startAnimation() {
   }
 
   handleMouseDown(event: MouseEvent) {
-    if (this.sum < 2){
-      this.isVisibleMissile = true; // Oculta el div
-    }
-    this.sum++;
+    
 
     const container = event.currentTarget as HTMLElement;
     const rect = container.getBoundingClientRect();
     this.markerX = event.clientX - rect.left;
     this.markerY = event.clientY - rect.top;
     this.showMarker = true;
-
+    this.firstDivWidth -=this.markerY
     console.log('Coordenadas del mouse dentro del div:');
     console.log('X:', this.markerX);
     console.log('Y:', this.markerY);
+
+    if (this.sum < 2){
+      this.isVisibleMissile = true; // Oculta el div
+    }
+    this.sum++;
   }
+  
 }
