@@ -1,0 +1,15 @@
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <h1>THE GAME</h1>
+  <div>
+      <button (click)="newGame()" type="button" class="btn btn-primary">Crear partida</button>
+      <button (click)="logout()" type="button" class="btn ms-2 btn-primary">Logout</button>
+  </div>
+</div>
+<div style="display: flex; justify-content: center;">
+  <ul class="list-group list-group-flush" style="width: 80%;">
+    <li *ngFor="let game of games" class="list-group-item d-flex justify-content-between align-items-center">
+      Partida hecha por: {{game.user_1}}, Partida creada en: {{game.created_at}}
+      <button (click)="unirse(game.id)" type="button" class="btn btn-primary">Unirse</button>
+    </li>
+  </ul>
+</div>

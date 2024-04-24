@@ -1,0 +1,94 @@
+{
+  "hash": "26f1aebf",
+  "configHash": "efee19cb",
+  "lockfileHash": "8b08a71e",
+  "browserHash": "465e8b5e",
+  "optimized": {
+    "@angular/animations": {
+      "src": "../../../../../node_modules/@angular/animations/fesm2022/animations.mjs",
+      "file": "@angular_animations.js",
+      "fileHash": "22033aba",
+      "needsInterop": false
+    },
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "c60e9789",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "82c48e5b",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "ff393f08",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "15814ad8",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "8d6511b0",
+      "needsInterop": false
+    },
+    "@angular/platform-browser/animations": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
+      "file": "@angular_platform-browser_animations.js",
+      "fileHash": "d8499c80",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "8a3793fc",
+      "needsInterop": false
+    },
+    "laravel-echo": {
+      "src": "../../../../../node_modules/laravel-echo/dist/echo.js",
+      "file": "laravel-echo.js",
+      "fileHash": "90d08b11",
+      "needsInterop": false
+    },
+    "pusher-js": {
+      "src": "../../../../../node_modules/pusher-js/dist/web/pusher.js",
+      "file": "pusher-js.js",
+      "fileHash": "9cbc8fc3",
+      "needsInterop": true
+    },
+    "sweetalert2": {
+      "src": "../../../../../node_modules/sweetalert2/dist/sweetalert2.all.js",
+      "file": "sweetalert2.js",
+      "fileHash": "28324177",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-WZ7JFQAY": {
+      "file": "chunk-WZ7JFQAY.js"
+    },
+    "chunk-6TMBGOJC": {
+      "file": "chunk-6TMBGOJC.js"
+    },
+    "chunk-AMHGSOWV": {
+      "file": "chunk-AMHGSOWV.js"
+    },
+    "chunk-ZGR3I4SF": {
+      "file": "chunk-ZGR3I4SF.js"
+    },
+    "chunk-E5XDF7WI": {
+      "file": "chunk-E5XDF7WI.js"
+    },
+    "chunk-WKYGNSYM": {
+      "file": "chunk-WKYGNSYM.js"
+    }
+  }
+}

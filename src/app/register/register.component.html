@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-center">
+  <form [formGroup]="singupForm" class="w-50">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input formControlName="name" type="text" class="form-control" id="name" autocomplete="off" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input formControlName="email" type="email" class="form-control" id="email" autocomplete="off" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="password" autocomplete="off" required>
+      </div>
+      <button (click)="onSubmit()" class="submit-btn" id="submit">Registrarse</button>
+    </form>
+  </div>
+  
+ 

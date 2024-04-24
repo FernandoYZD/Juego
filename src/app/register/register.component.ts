@@ -1,0 +1,55 @@
+import { Component, Input } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../core/services/auth.service';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router} from '@angular/router';
+import { response } from 'express';
+import Swal from 'sweetalert2';
+import { CommonModule } from '@angular/common';
+
+
+
+
+@Component({
+  selector: 'app-register',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css'
+})
+export class RegisterComponent {
+  singupForm= new FormGroup({
+    name: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(200)]),
+    email: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}'), Validators.email]),
+    password: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+  })
+
+  constructor(private authservice: AuthService, private fb: FormBuilder, private router: Router){}
+
+  onSubmit(){
+    const isformSubmitted = this.singupForm.valid;
+    const userData = this.singupForm.value;
+
+    console.log(isformSubmitted)
+    if(isformSubmitted){
+      this.authservice.register(userData).subscribe(
+        (response) => {
+          Swal.fire({
+            title: "Registrado!",
+            text: "Sa ha enviado un correo para verificar tu cuenta",
+            icon: "success"
+            });
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          console.log(error)
+          Swal.fire({
+            title: 'Error',
+            text: error.error.msg,
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          });
+        })
+    }
+  }
+}
