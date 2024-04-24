@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { GameService } from '../core/services/game.service';
 
@@ -29,7 +29,7 @@ import {
     trigger('slideUpDown', [
       transition(':enter', [
         style({ position: 'absolute', transform: 'translatey(0%)' }),
-        animate('2000ms linear', style({ transform: 'translatey(3000%)' }))
+        animate('2000ms linear', style({ transform: 'translatey(100%)' }))
       ]),
       
 
@@ -45,6 +45,8 @@ export class GameComponent implements OnInit {
   markerY = 0;
   markerXShip = 0;
   markerYShip = 0;
+  @ViewChild('firstDiv') firstDiv!: ElementRef;
+  @ViewChild('secondDiv') secondDiv!: ElementRef;
   
 
   constructor(private elementRef: ElementRef, private gameservice: GameService) { }
@@ -54,6 +56,7 @@ export class GameComponent implements OnInit {
   ngAfterViewInit() {
     const divElement = this.elementRef.nativeElement.querySelector('#miDiv');
     if (divElement) {
+      //console.log(divElement)
       const rect = divElement.getBoundingClientRect();
       console.log('Rect:', rect);
       this.markerXShip = rect.left;

@@ -1,16 +1,18 @@
-<div style="  width: 100%; height: 100%; background-color: blue;" >
+<div id="full" style="  width: 100%; height: 100%; background-color: blue;" >
     <div   (mousedown)="handleMouseDown($event)" style=" width: 100%; height:100px; position:absolute; top: 0;  background-color:aquamarine" >as
         <div *ngIf="isVisibleMissile" >    
-        <div  id="marker" *ngIf="showMarker" (click)="startAnimation()" [style.left.px]="markerX" [style.top.px]="markerY" [@slideUpDown] (@slideUpDown.done)="onAnimationDonee()" 
-                 style="position: absolute; width: 20px; height: 20px;">
-                 <img src="../../assets/missile.png" alt="Barco de vela" width="150%" height="150%">
+            <div  id="marker" *ngIf="showMarker" (click)="startAnimation()" [style.left.px]="markerX" [style.top.px]="markerY" [@slideUpDown] (@slideUpDown.done)="onAnimationDonee()" 
+                style="position: absolute; width: 20px; height: 100%; background-color:yellowgreen">
+                <div  style="position: absolute; width: 20px; height: 20px;">
+                    <img src="../../assets/missile.png" alt="Barco de vela" width="150%" height="150%">
                 </div>
             </div>
+        </div>
     </div>
     <div *ngIf="isVisible">
-    <div  id="miDiv" style=" width: 100%; background-color: brown; position:absolute; bottom: 0; " [@slideInOut] (@slideInOut.done)="onAnimationDone()">
+    <div   style=" height: 100px; width: 100%; position:absolute; bottom: 0; " [@slideInOut] (@slideInOut.done)="onAnimationDone()">
         <div id="miDiv" style=" height: 100px;width: 100px; position:absolute; right:0; bottom: 0;">
-            <img src="../../assets/sailing-ship.png" alt="Barco de vela" width="75%" height="75%">
+            <img  style=" position:absolute; bottom: 0;" src="../../assets/sailing-ship.png" alt="Barco de vela" width="75%" height="75%">
         </div>
     </div>
 </div>
