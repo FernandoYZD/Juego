@@ -1,3 +1,4 @@
+<h1>REGISTER</h1>
 <div class="d-flex justify-content-center">
   <form [formGroup]="singupForm" class="w-50">
       <div class="mb-3">
@@ -13,7 +14,10 @@
         <input formControlName="password" type="password" class="form-control" id="password" autocomplete="off" required>
       </div>
       <button (click)="onSubmit()" class="submit-btn" id="submit">Registrarse</button>
+      <button (click)="login()" class="submit-btn" >Ya tengo cuenta</button>
     </form>
+    
+
   </div>
   
  

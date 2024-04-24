@@ -26,6 +26,9 @@ export class RegisterComponent {
 
   constructor(private authservice: AuthService, private fb: FormBuilder, private router: Router){}
 
+  login(){
+    this.router.navigate(['/login']);
+  }
   onSubmit(){
     const isformSubmitted = this.singupForm.valid;
     const userData = this.singupForm.value;
