@@ -1,73 +1,73 @@
 {
-  "hash": "26f1aebf",
-  "configHash": "efee19cb",
+  "hash": "4ede7afb",
+  "configHash": "90b806b1",
   "lockfileHash": "8b08a71e",
-  "browserHash": "465e8b5e",
+  "browserHash": "9eda6cd0",
   "optimized": {
     "@angular/animations": {
       "src": "../../../../../node_modules/@angular/animations/fesm2022/animations.mjs",
       "file": "@angular_animations.js",
-      "fileHash": "22033aba",
+      "fileHash": "e730900a",
       "needsInterop": false
     },
     "@angular/common": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "c60e9789",
+      "fileHash": "b6c95e70",
       "needsInterop": false
     },
     "@angular/common/http": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
       "file": "@angular_common_http.js",
-      "fileHash": "82c48e5b",
+      "fileHash": "ce58ad27",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "ff393f08",
+      "fileHash": "322aa5de",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "15814ad8",
+      "fileHash": "80bc6fb7",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "8d6511b0",
+      "fileHash": "a042f918",
       "needsInterop": false
     },
     "@angular/platform-browser/animations": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
       "file": "@angular_platform-browser_animations.js",
-      "fileHash": "d8499c80",
+      "fileHash": "e401a0d1",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "8a3793fc",
+      "fileHash": "c1a48277",
       "needsInterop": false
     },
     "laravel-echo": {
       "src": "../../../../../node_modules/laravel-echo/dist/echo.js",
       "file": "laravel-echo.js",
-      "fileHash": "90d08b11",
+      "fileHash": "8e459ac7",
       "needsInterop": false
     },
     "pusher-js": {
       "src": "../../../../../node_modules/pusher-js/dist/web/pusher.js",
       "file": "pusher-js.js",
-      "fileHash": "9cbc8fc3",
+      "fileHash": "4aedb02e",
       "needsInterop": true
     },
     "sweetalert2": {
       "src": "../../../../../node_modules/sweetalert2/dist/sweetalert2.all.js",
       "file": "sweetalert2.js",
-      "fileHash": "28324177",
+      "fileHash": "9f8660a3",
       "needsInterop": true
     }
   },

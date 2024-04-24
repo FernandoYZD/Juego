@@ -35,7 +35,6 @@ export class HomeComponent {
  
   }
   logout(): void {  
-    
     this.authservice.logout().subscribe(
       (response) =>{
         localStorage.removeItem("token")
@@ -77,9 +76,11 @@ export class HomeComponent {
         });
       }
     )
+
     this.echo.channel('games-game').listen('.games-event', (e: any) => {
       let user = JSON.parse(localStorage.getItem('user') || '{}');
       let userId = user.id;
+      console.log(e)
       if (e.games.user_1 !== userId) {
         this.games.push(e.games)
       }
@@ -93,11 +94,8 @@ export class HomeComponent {
           title: 'Partida iniciada',
           icon: 'success',
           confirmButtonText: 'Aceptar'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            this.router.navigate(['/game']);
-          }
-      });
+        });
+        this.router.navigate(['/game']);
       },
       (error) => {
         if(error.status == 401){
