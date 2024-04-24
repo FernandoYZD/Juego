@@ -8,8 +8,10 @@
             </div>
     </div>
     <div *ngIf="isVisible">
-    <div  id="miDiv" style=" width: 100px; position:absolute; bottom: 0; right:0" [@slideInOut] (@slideInOut.done)="onAnimationDone()">
-        <img src="../../assets/sailing-ship.png" alt="Barco de vela" width="75%" height="75%">
+    <div  id="miDiv" style=" width: 100%; background-color: brown; position:absolute; bottom: 0; " [@slideInOut] (@slideInOut.done)="onAnimationDone()">
+        <div id="miDiv" style=" height: 100px;width: 100px; position:absolute; right:0; bottom: 0;">
+            <img src="../../assets/sailing-ship.png" alt="Barco de vela" width="75%" height="75%">
+        </div>
     </div>
 </div>
 </div>

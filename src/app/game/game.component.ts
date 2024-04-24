@@ -20,8 +20,8 @@ import {
   animations: [
     trigger('slideInOut', [
       transition(':enter', [
-        style({ position: 'absolute', transform: 'translateX(-1360%)' }),
-        animate('5000ms linear', style({ transform: 'translateX(100%)' }))
+        style({ position: 'absolute', transform: 'translateX(-100%)' }),
+        animate('5000ms linear', style({ transform: 'translateX(100px)' }))
       ]),
       
 
