@@ -17,8 +17,8 @@ import Pusher from 'pusher-js';
     trigger('slideInOut', [
       transition(':enter', [
         style({ position: 'absolute', transform: 'translateX(-100%)' }),
-        animate('5000ms linear', style({ transform: 'translateX(100px)' }))
-      ]),
+        animate('{{ tiempo }}', style({ transform: 'translateX(100px)' }))
+    ], { params: { tiempo: '5000ms linear' } }),
     ]),
     trigger('slideUpDown', [
       transition(':enter', [
@@ -31,8 +31,9 @@ import Pusher from 'pusher-js';
 
 export class GameComponent implements OnInit {
   barraDisparos = true
-  barcos = 2
+  barcos = 6
   vida = this.barcos / 2
+  tiempo: any
   echo: Echo
   isVisible = false; 
   isVisibleMissile = true;
@@ -107,7 +108,7 @@ export class GameComponent implements OnInit {
     this.echo.channel('win-game').listen('.win-game-event', (e: any) => {
 
       Swal.fire({
-        title: "Zorra for you!",
+        title: "Lo siento!",
         text: "Has perdido",
         icon: "info"
         }).then((result) => {
@@ -145,10 +146,11 @@ export class GameComponent implements OnInit {
       if(this.markerXShip <= this.markerX + 60 &&  this.markerX -60 <= this.markerXShip ){
         this.barcos -= 1
         this.vida = this.barcos / 2
+        this.tiempo = `${1}ms linear`; 
         if(this.barcos <= 0){
           const id = localStorage.getItem('game')
           let user = JSON.parse(localStorage.getItem('user') || '{}');
-          let use = { 'win': user.user }
+          let use = { 'win': user.name }
           this.gameservice.win(id, use).subscribe(
             (response) =>{
               this.isVisible = false
