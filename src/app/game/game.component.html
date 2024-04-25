@@ -10,10 +10,31 @@
         </div>
     </div>
     <div *ngIf="isVisible">
-    <div   style=" height: 100px; width: 100%; position:absolute; bottom: 0; " [@slideInOut] (@slideInOut.done)="onAnimationDone()">
-        <div id="miDiv" style=" height: 100px;width: 100px; position:absolute; right:0; bottom: 0;">
+        <div *ngIf="vida === 5 || vida === 4.5" style=" height: 100px; width: 100%; position:absolute; bottom: 0; " [@slideInOut] (@slideInOut.done)="onAnimationDone()">
+          <div id="miDiv" style=" height: 100px;width: 100px; position:absolute; right:0; bottom: 0;">
             <img  style=" position:absolute; bottom: 0;" src="../../assets/sailing-ship.png" alt="Barco de vela" width="75%" height="75%">
+          </div>
         </div>
-    </div>
-</div>
+        <div *ngIf="vida === 4 || vida === 3.5" style=" height: 100px; width: 100%; position:absolute; bottom: 0; " [@slideInOut4] (@slideInOut4.done)="onAnimationDone()">
+          <div id="miDiv" style=" height: 100px;width: 100px; position:absolute; right:0; bottom: 0;">
+            <img  style=" position:absolute; bottom: 0;" src="../../assets/sailing-ship.png" alt="Barco de vela" width="75%" height="75%">
+          </div>
+        </div>
+        <div *ngIf="vida === 3 || vida === 2.5" style=" height: 100px; width: 100%; position:absolute; bottom: 0; " [@slideInOut3] (@slideInOut3.done)="onAnimationDone()">
+          <div id="miDiv" style=" height: 100px;width: 100px; position:absolute; right:0; bottom: 0;">
+            <img  style=" position:absolute; bottom: 0;" src="../../assets/sailing-ship.png" alt="Barco de vela" width="75%" height="75%">
+          </div>
+        </div>
+        <div *ngIf="vida === 2 || vida === 1.5" style=" height: 100px; width: 100%; position:absolute; bottom: 0; " [@slideInOut2] (@slideInOut2.done)="onAnimationDone()">
+          <div id="miDiv" style=" height: 100px;width: 100px; position:absolute; right:0; bottom: 0;">
+            <img  style=" position:absolute; bottom: 0;" src="../../assets/sailing-ship.png" alt="Barco de vela" width="75%" height="75%">
+          </div>
+        </div>
+        <div *ngIf="vida === 1 || vida === 0.5" style=" height: 100px; width: 100%; position:absolute; bottom: 0; " [@slideInOut1] (@slideInOut1.done)="onAnimationDone()">
+          <div id="miDiv" style=" height: 100px;width: 100px; position:absolute; right:0; bottom: 0;">
+            <img  style=" position:absolute; bottom: 0;" src="../../assets/sailing-ship.png" alt="Barco de vela" width="75%" height="75%">
+          </div>
+        </div>
+      </div>
+      
 </div>

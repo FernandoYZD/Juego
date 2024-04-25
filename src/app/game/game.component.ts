@@ -18,7 +18,31 @@ import Pusher from 'pusher-js';
       transition(':enter', [
         style({ position: 'absolute', transform: 'translateX(-100%)' }),
         animate('{{ tiempo }}', style({ transform: 'translateX(100px)' }))
-    ], { params: { tiempo: '5000ms linear' } }),
+    ], { params: { tiempo: '8000ms linear' } }),
+    ]),
+    trigger('slideInOut4', [
+      transition(':enter', [
+        style({ position: 'absolute', transform: 'translateX(-100%)' }),
+        animate('{{ tiempo }}', style({ transform: 'translateX(100px)' }))
+    ], { params: { tiempo: '7500ms linear' } }),
+    ]),
+    trigger('slideInOut3', [
+      transition(':enter', [
+        style({ position: 'absolute', transform: 'translateX(-100%)' }),
+        animate('{{ tiempo }}', style({ transform: 'translateX(100px)' }))
+    ], { params: { tiempo: '6000ms linear' } }),
+    ]),
+    trigger('slideInOut2', [
+      transition(':enter', [
+        style({ position: 'absolute', transform: 'translateX(-100%)' }),
+        animate('{{ tiempo }}', style({ transform: 'translateX(100px)' }))
+    ], { params: { tiempo: '4000ms linear' } }),
+    ]),
+    trigger('slideInOut1', [
+      transition(':enter', [
+        style({ position: 'absolute', transform: 'translateX(-100%)' }),
+        animate('{{ tiempo }}', style({ transform: 'translateX(100px)' }))
+    ], { params: { tiempo: '2000ms linear' } }),
     ]),
     trigger('slideUpDown', [
       transition(':enter', [
@@ -31,7 +55,7 @@ import Pusher from 'pusher-js';
 
 export class GameComponent implements OnInit {
   barraDisparos = true
-  barcos = 6
+  barcos = 10
   vida = this.barcos / 2
   tiempo: any
   echo: Echo
@@ -67,18 +91,13 @@ export class GameComponent implements OnInit {
     let userId = user.id; 
 
     this.echo.channel('turn-game').listen('.turn-game-event', (e: any) => {
-      console.log(userId) 
-      console.log(e.userId.turn) 
       if(userId === e.userId.turn){
         this.sum = 0
         this.prende();
-        console.log("Te toca")
       }
     });
 
     this.echo.channel('game-cancel-game').listen('.game-cancel-event', (e: any) => {
-      console.log("HA salido")
-      console.log(e)
       if(e.cancel.is_active){
         let user = JSON.parse(localStorage.getItem('user') || '{}');
         let name = user.name;
@@ -122,27 +141,21 @@ export class GameComponent implements OnInit {
     const id = localStorage.getItem('game')
     this.gameservice.info(id).subscribe(
       (response) =>{
-        console.log(response.data)
-        console.log("User: " +userId)
         if(userId === response.data.turn){
           this.prende();
-          console.log("Te toca")
         }
       }
     )
   }
   ngAfterViewInit() {
+    console.log(this.vida)
     this.barraDisparos = true
     this.firstDivWidth = this.firstDiv.nativeElement.getBoundingClientRect().height;
-    console.log(this.firstDivWidth);
     const divElement = this.elementRef.nativeElement.querySelector('#miDiv');
     if (divElement) {
       const rect = divElement.getBoundingClientRect();
-      console.log('Rect:', rect);
       this.markerXShip = rect.left;
       this.markerYShip = rect.top
-      console.log(this.markerXShip);
-      console.log(this.markerYShip);
       if(this.markerXShip <= this.markerX + 60 &&  this.markerX -60 <= this.markerXShip ){
         this.barcos -= 1
         this.vida = this.barcos / 2
@@ -181,13 +194,12 @@ export class GameComponent implements OnInit {
     }
   }
   onAnimationDone() {
-    console.log(this.vida)
     if(this.vida > 0){
       this.isVisible = false; 
       let game = localStorage.getItem('game');
       this.gameservice.turn(game).subscribe(
         (response) =>{
-          console.log("Había una vez un barco chiquito")
+          console.log("Ha finalizado tu turno")
         },
         (error) => {
           if(error.status == 401){
@@ -219,9 +231,6 @@ export class GameComponent implements OnInit {
     this.markerY = event.clientY - rect.top;
     this.showMarker = true;
     this.firstDivWidth -=this.markerY
-    console.log('Coordenadas del mouse dentro del div:');
-    console.log('X:', this.markerX);
-    console.log('Y:', this.markerY);
 
     if (this.sum < 2){
       this.isVisibleMissile = true; 
@@ -237,7 +246,6 @@ export class GameComponent implements OnInit {
       const id = localStorage.getItem('game')
       this.gameservice.cancel(id).subscribe(
         (response) =>{
-          console.log("Partida finalizada")
           localStorage.removeItem('game')
           Swal.fire({
             title: "Partida finalizada!",
