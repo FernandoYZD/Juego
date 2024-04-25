@@ -86,6 +86,7 @@ export class HomeComponent {
     });
   }
   unirse(id:Number): void{
+    localStorage.setItem('game', id.toString());
     this.gameservice.start(id).subscribe(
       (response) =>{
         Swal.fire({

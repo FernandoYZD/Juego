@@ -40,12 +40,22 @@ export class GameService {
   public turn(id:any):Observable<any>{
     let token = localStorage.getItem('token')
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.put(`${this.url}/turn/${id}`, { headers: headers });
+    return this.http.put(`${this.url}turn/${id}`, {}, { headers: headers });
   } 
   public board():Observable<any>{
     let token = localStorage.getItem('token')
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put(`${this.url}/board`, { headers: headers });
+  }  
+  public info(id:any):Observable<any>{
+    let token = localStorage.getItem('token')
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.url}info/${id}`, { headers: headers });
+  }  
+  public win(id:any, user:any):Observable<any>{
+    let token = localStorage.getItem('token')
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.url}win/${id}`,user, { headers: headers });
   } 
 
 }
