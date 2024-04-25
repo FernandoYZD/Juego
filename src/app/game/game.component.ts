@@ -143,6 +143,11 @@ export class GameComponent implements OnInit {
         if(userId === response.data.turn){
           this.prende();
         }
+      },
+      (error) => {
+        if(error.status == 404){
+          this.router.navigate(['/home']);
+        }
       }
     )
   }
