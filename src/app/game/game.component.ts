@@ -57,7 +57,6 @@ export class GameComponent implements OnInit {
   barraDisparos = true
   barcos = 10
   vida = this.barcos / 2
-  tiempo: any
   echo: Echo
   isVisible = false; 
   isVisibleMissile = true;
@@ -159,7 +158,6 @@ export class GameComponent implements OnInit {
       if(this.markerXShip <= this.markerX + 60 &&  this.markerX -60 <= this.markerXShip ){
         this.barcos -= 1
         this.vida = this.barcos / 2
-        this.tiempo = `${1}ms linear`; 
         if(this.barcos <= 0){
           const id = localStorage.getItem('game')
           let user = JSON.parse(localStorage.getItem('user') || '{}');
