@@ -4,6 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../core/services/auth.service';
 import { Router} from '@angular/router';
 import Swal from 'sweetalert2';
+import Echo from 'laravel-echo';
+import Pusher from 'pusher-js';
 
 @Component({
   selector: 'app-history',
@@ -14,8 +16,21 @@ import Swal from 'sweetalert2';
 })
 export class HistoryComponent {
   historys: any[] = [];
+  echo: Echo
 
-  constructor(private authservice: AuthService, private router: Router){}
+  constructor(private authservice: AuthService, private router: Router){
+    (window as any).Pusher = Pusher;
+    this.echo = new Echo({
+      broadcaster: 'pusher',
+      key: 'GoofNBCH',
+      cluster: 'mt1',
+      encrypted: true,
+      wsHost: window.location.hostname,
+      wsPort: 6001,
+      disableStats: true,
+      forceTLS: false,
+    });
+  }
 
   ngOnInit(): void {
     this.authservice.history().subscribe(
@@ -34,6 +49,10 @@ export class HistoryComponent {
         });
       }
     )
+
+    this.echo.channel('history-game').listen('.history-game-event', (e: any) => {
+        this.historys.push(e.hostorial)
+    });
     
   }
 }
