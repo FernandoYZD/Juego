@@ -34,6 +34,13 @@ export class HomeComponent {
     });
  
   }
+  history(): void {  
+    this.authservice.history().subscribe(
+      (response) =>{
+        this.router.navigate(['/history']);
+
+      },)
+  }
   logout(): void {  
     this.authservice.logout().subscribe(
       (response) =>{
