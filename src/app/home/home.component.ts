@@ -87,14 +87,13 @@ export class HomeComponent {
     this.echo.channel('games-game').listen('.games-event', (e: any) => {
       let user = JSON.parse(localStorage.getItem('user') || '{}');
       let userId = user.id;
-      console.log(e)
       if (e.games.user_1 !== userId) {
         this.games.push(e.games)
       }
-      console.log(this.echo)
     });
   }
   unirse(id:Number): void{
+    localStorage.setItem('game', id.toString());
     this.gameservice.start(id).subscribe(
       (response) =>{
         Swal.fire({

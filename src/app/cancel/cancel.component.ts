@@ -40,7 +40,6 @@ import Echo from 'laravel-echo';
       }
       terminar(){
         const id = localStorage.getItem('game');
-        console.log(id)
         this.gameservice.cancel(id).subscribe(
           (response) =>{
             Swal.fire({
