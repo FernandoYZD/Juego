@@ -124,10 +124,9 @@ export class GameComponent implements OnInit {
     });
     
     this.echo.channel('win-game').listen('.win-game-event', (e: any) => {
-
       Swal.fire({
-        title: "Lo siento!",
-        text: "Has perdido",
+        title: "Lo siento, has perdido!",
+        text: `Barcos restantes: ${this.vida} `,
         icon: "info"
         }).then((result) => {
           if (result.isConfirmed) {
@@ -152,7 +151,6 @@ export class GameComponent implements OnInit {
     )
   }
   ngAfterViewInit() {
-    console.log(this.vida)
     this.barraDisparos = true
     this.firstDivWidth = this.firstDiv.nativeElement.getBoundingClientRect().height;
     const divElement = this.elementRef.nativeElement.querySelector('#miDiv');
@@ -202,7 +200,11 @@ export class GameComponent implements OnInit {
       let game = localStorage.getItem('game');
       this.gameservice.turn(game).subscribe(
         (response) =>{
-          console.log("Ha finalizado tu turno")
+          Swal.fire({
+            title: "Turno finalizado!",
+            text: `Aún te quedan ${this.vida} barcos`,
+            icon: "info"
+            })
         },
         (error) => {
           if(error.status == 401){

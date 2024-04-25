@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 })
 
 export class LoginComponent {
+  enablebutton: boolean = true
   email: string = ""
   singupForm= new FormGroup({
     email: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}'), Validators.email]),
@@ -30,13 +31,13 @@ export class LoginComponent {
     this.router.navigate(['/register']);
   }
   onSubmit(){
+    this.enablebutton = false
     const isformSubmitted = this.singupForm.valid;
     const userData = this.singupForm.value;
-
-    console.log(isformSubmitted)
     if(isformSubmitted){
       this.authservice.code(userData).subscribe(
-        (response) => {        
+        (response) => {
+          this.enablebutton = true        
           this.email = this.singupForm.value.email!
           localStorage.setItem('email', this.email)
           Swal.fire({
@@ -50,7 +51,7 @@ export class LoginComponent {
           });
         },
         (error) => {
-          console.log(error)
+          this.enablebutton = true
           Swal.fire({
             title: 'Error',
             text: error.error.msg,

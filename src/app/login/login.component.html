@@ -9,7 +9,7 @@
           <label for="password" class="form-label">Password</label>
           <input formControlName="password" type="password" class="form-control" id="password" autocomplete="off" required>
         </div>
-        <button (click)="onSubmit()" class="submit-btn" id="submit">Iniciar sesión</button>
+        <button [disabled]="!enablebutton" (click)="onSubmit()" class="submit-btn" id="submit">Iniciar sesión</button>
         <button (click)="register()" class="submit-btn" >No tengo cuenta</button>
 
       </form>

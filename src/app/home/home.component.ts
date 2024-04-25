@@ -18,6 +18,9 @@ import Pusher from 'pusher-js';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  
+  enablebuttonLogout: boolean = true
+  enablebuttonUnirse: boolean = true
   games: any[] = [];
   echo:Echo;
   constructor(private gameservice: GameService, private authservice: AuthService, private router: Router){
@@ -42,9 +45,12 @@ export class HomeComponent {
       },)
   }
   logout(): void {  
+    console.log("Bye")
+    this.enablebuttonLogout = false
     this.authservice.logout().subscribe(
       (response) =>{
         localStorage.removeItem("token")
+        this.enablebuttonLogout = true
         Swal.fire({
           title: "Cuenta cerrada!",
           text: "Bye :(",
@@ -56,6 +62,7 @@ export class HomeComponent {
         });
       },
       (error) => {
+        this.enablebuttonLogout = true
         Swal.fire({
           title: 'Error',
           text: error.error.msg,
@@ -88,14 +95,34 @@ export class HomeComponent {
       let user = JSON.parse(localStorage.getItem('user') || '{}');
       let userId = user.id;
       if (e.games.user_1 !== userId) {
+        const id = localStorage.getItem('game');
+        this.authservice.userName(id).subscribe(
+          (response) =>{
+            e.games.user_1 = response.data.name
+          },
+          (error) => {
+          e.games.user_1 = "Nombre no encontrado"
+            if(error.status == 401){
+              this.router.navigate(['/login']);Swal.fire({
+                title: 'Aviso',
+                text: error.error.msg,
+                icon: 'info',
+                confirmButtonText: 'Aceptar'
+              });
+            }
+            
+          }
+        )
         this.games.push(e.games)
       }
     });
   }
   unirse(id:Number): void{
+    this.enablebuttonUnirse = false
     localStorage.setItem('game', id.toString());
     this.gameservice.start(id).subscribe(
       (response) =>{
+        this.enablebuttonUnirse = true
         Swal.fire({
           title: 'Partida iniciada',
           icon: 'success',
@@ -104,6 +131,7 @@ export class HomeComponent {
         this.router.navigate(['/game']);
       },
       (error) => {
+        this.enablebuttonUnirse = true
         if(error.status == 401){
           this.router.navigate(['/login']);
         }

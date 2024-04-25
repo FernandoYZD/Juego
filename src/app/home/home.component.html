@@ -2,8 +2,8 @@
   <h1>THE GAME</h1>
   <div>
     <button (click)="history()" type="button" class="btn btn-primary">Historial</button>
-    <button (click)="newGame()" type="button" class="btn ms-2 btn-primary">Crear partida</button>
-    <button (click)="logout()" type="button" class="btn ms-2 btn-primary">Logout</button>
+    <button [disabled]="!enablebuttonUnirse"  (click)="newGame()" type="button" class="btn ms-2 btn-primary">Crear partida</button>
+    <button [disabled]="!enablebuttonLogout" (click)="logout()" type="button" class="btn ms-2 btn-primary">Logout</button>
   </div>
 </div>
 <div style="display: flex; justify-content: center; ">

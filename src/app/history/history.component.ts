@@ -55,4 +55,8 @@ export class HistoryComponent {
     });
     
   }
+
+  goBack(){
+    this.router.navigate(['/home']);
+  }
 }

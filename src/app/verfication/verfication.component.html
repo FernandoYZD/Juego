@@ -4,7 +4,8 @@
     <form [formGroup]="singupForm" class="w-50">
         <label for="text" class="form-label">Codigo</label>
         <input formControlName="code" type="text" class="form-control" id="code" autocomplete="off" required>
-        <button (click)="onSubmit()" class="submit-btn" id="submit">ENVIAR</button>
+        <button [disabled]="!enablebutton" (click)="onSubmit()" class="submit-btn" id="submit">VERIFICAR</button>
+        <button (click)="regresar()" class="submit-btn" id="submit">DATOS INCORRECTOS?</button>
       </form>
     </div>
     

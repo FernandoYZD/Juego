@@ -29,4 +29,9 @@ export class AuthService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`${this.url}historial`, { headers: headers });
   } 
+  public userName(id:any):Observable<any>{
+    let token = localStorage.getItem('token')
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.url}search/${id}`, { headers: headers });
+  } 
 }

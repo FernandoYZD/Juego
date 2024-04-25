@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { error } from 'console';
 import { GameService } from '../core/services/game.service';
 import Swal from 'sweetalert2';
 import { Router} from '@angular/router';

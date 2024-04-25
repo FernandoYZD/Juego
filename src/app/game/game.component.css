@@ -1,0 +1,14 @@
+/* styles.css */
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .left {
+    text-align: left;
+  }
+  
+  .right {
+    text-align: right;
+  }
+  

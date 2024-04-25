@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
   styleUrl: './verfication.component.css'
 })
 export class VerficationComponent {
+  enablebutton: boolean = true
   res:any = {}
 singupForm= new FormGroup({
   code: new FormControl("", [Validators.required, Validators.max(6)])
@@ -24,6 +25,7 @@ singupForm= new FormGroup({
 constructor(private authservice: AuthService, private fb: FormBuilder, private router: Router){}
 
 onSubmit(){
+  this.enablebutton = false
   const isformSubmitted = this.singupForm.valid;
   const userData = {
     code: this.singupForm.value.code, 
@@ -33,10 +35,10 @@ onSubmit(){
     this.authservice.login(userData).subscribe(
       (response) => {          
         this.res = response.data
-        console.log(this.res)
         localStorage.removeItem('email')
         localStorage.setItem('token', this.res.token)
         localStorage.setItem('user', JSON.stringify(this.res.user))
+        this.enablebutton = true
           Swal.fire({
             title: "Datos correctos!",
             text: "Bienvenido!!!",
@@ -48,7 +50,7 @@ onSubmit(){
           });
         },
       (error) => {
-        console.log(error)
+        this.enablebutton = true
         Swal.fire({
           title: 'Error',
           text: error.error.msg,
@@ -56,6 +58,17 @@ onSubmit(){
           confirmButtonText: 'Aceptar'
         });
       })
+  }else{
+    this.enablebutton = true
+    Swal.fire({
+      title: "Datos incorrectos!",
+      text: "El código debe ser de 6 de largo",
+      icon: "info"
+      })
   }
+}
+regresar(){
+  localStorage.removeItem('email')
+  this.router.navigate(['/login']);
 }
 }
