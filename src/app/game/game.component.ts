@@ -191,7 +191,7 @@ export class GameComponent implements OnInit {
         }
       }
     } else {
-      console.error('No se pudo encontrar el barco');
+      console.log('No se pudo encontrar el barco');
     }
   }
   onAnimationDone() {
@@ -200,11 +200,7 @@ export class GameComponent implements OnInit {
       let game = localStorage.getItem('game');
       this.gameservice.turn(game).subscribe(
         (response) =>{
-          Swal.fire({
-            title: "Turno finalizado!",
-            text: `Aún te quedan ${this.vida} barcos`,
-            icon: "info"
-            })
+            console.log("Turno finalizado!")
         },
         (error) => {
           if(error.status == 401){

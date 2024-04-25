@@ -1,14 +1,20 @@
-<div  #firstDiv id="firstDiv" style=" width: 100%; height: 100vh ;" >
-    <div   (mousedown)="barraDisparos ? handleMouseDown($event): null" style=" width: 100%; height:100px; position:absolute; top: 0;  background-color:aquamarine" >
-        <div *ngIf="isVisibleMissile" >    
-            <div  #secondDiv id="secondDiv" *ngIf="showMarker"  [style.left.px]="markerX" [style.top.px]="markerY" [@slideUpDown]="{ value: isVisibleMissile, params: { firstDivWidth: firstDivWidth } }" (@slideUpDown.done)="onAnimationDonee()" 
-                style="width: 20px;  background-color:yellowgreen">
-                <div  style="position: absolute; width: 20px; height: 20px;">
-                    <img src="../../assets/missile.png" alt="Barco de vela" width="150%" height="150%">
-                </div>
-            </div>
-        </div>
-    </div>
+    <div #firstDiv id="firstDiv" style="width: 100%; height: 100vh;">
+      <div (mousedown)="barraDisparos ? handleMouseDown($event): null" style="width: 100%; height:100px; position:absolute; top: 0; background-color:aquamarine">
+          <div *ngIf="isVisibleMissile">
+              <div #secondDiv id="secondDiv" *ngIf="showMarker" [style.left.px]="markerX" [style.top.px]="markerY" [@slideUpDown]="{ value: isVisibleMissile, params: { firstDivWidth: firstDivWidth } }" (@slideUpDown.done)="onAnimationDonee()"
+                  style="width: 20px; background-color: yellowgreen;">
+                  <div style="position: absolute; width: 20px; height: 20px;">
+                      <img src="../../assets/missile.png" alt="Barco de vela" width="150%" height="150%">
+                  </div>
+              </div>
+          </div>
+          <!-- Mover el div con el título "Vidas" aquí -->
+          <div>
+              <h3>Vidas: {{vida}}</h3>
+          </div>
+      </div>
+
+
     <div *ngIf="isVisible">
         <div *ngIf="vida === 5 || vida === 4.5" style=" height: 100px; width: 100%; position:absolute; bottom: 0; " [@slideInOut] (@slideInOut.done)="onAnimationDone()">
           <div id="miDiv" style=" height: 100px;width: 100px; position:absolute; right:0; bottom: 0;">
@@ -35,5 +41,6 @@
             <img  style=" position:absolute; bottom: 0;" src="../../assets/sailing-ship.png" alt="Barco de vela" width="75%" height="75%">
           </div>
         </div>
-    </div>
+      </div>
+      
 </div>

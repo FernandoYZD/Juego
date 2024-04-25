@@ -152,11 +152,8 @@ export class HomeComponent {
             title: "Partida creada!",
             text: "Espere a que un jugador entre",
             icon: "success"
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.router.navigate(['/cancel']);
-              }
-          });
+            });
+            this.router.navigate(['/cancel']);
         },
         (error) => {
           Swal.fire({

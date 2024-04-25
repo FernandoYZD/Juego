@@ -39,15 +39,19 @@ onSubmit(){
         localStorage.setItem('token', this.res.token)
         localStorage.setItem('user', JSON.stringify(this.res.user))
         this.enablebutton = true
-          Swal.fire({
-            title: "Datos correctos!",
-            text: "Bienvenido!!!",
-            icon: "success"
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.router.navigate(['/home']);
-              }
-          });
+        Swal.fire({
+          title: "Datos correctos!",
+          text: "Bienvenido!!!",
+          icon: "success",
+          timer: 2000,
+          showConfirmButton: false,
+          allowOutsideClick: true
+        }).then((result) => {
+          if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop) {
+            this.router.navigate(['/home']);
+          } 
+        });
+        
         },
       (error) => {
         this.enablebutton = true
